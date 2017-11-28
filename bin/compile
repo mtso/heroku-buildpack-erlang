@@ -92,26 +92,24 @@ if [ $BINARY_RELEASES ]; then
     fi
     echo "-----> Install succeeded"
 else
-    DEFAULT_OTP_VERSION="master"
+    DEFAULT_OTP_VERSION="OTP-20.1"
     if [ -f ${build}/.preferred_otp_version ]; then
         OTP_VERSION=$(cat ${build}/.preferred_otp_version)
     fi
     ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
     case $STACK in
-        cedar-14)
-            echo "-----> Stack is cedar-14"
-            tarball="${ver}_cedar-14.tgz"
-            location="runtimes/"
+        heroku-16)
+            echo "-----> Stack is heroku-16"
+            tarball="${ver}.tgz"
+            location="heroku/heroku-16/"
             strip=""
             ;;
         *)
-            echo "-----> Stack is cedar"
-            tarball="${ver}.tgz"
-            location=""
-            strip="--strip-components=2"
+            echo "-----> Sorry, stack $STACK is not available"
+            exit 1
             ;;
     esac
-    OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${location}${tarball}"
+    OTP_TARBALL_URL="https://svn.marco-gatti.com/${location}${tarball}"
     ERLROOT=${build}/otp
     PROFILE=${HOME}/.profile.d
 
