@@ -10,7 +10,7 @@ Which build tool to use is automatically detected.  Rebar is currently the defau
 
 or
 
-    $ heroku create --buildpack "https://github.com/madcat78/heroku-buildpack-erlang.git"
+    $ heroku create --stack heroku-18 --buildpack "https://github.com/madcat78/heroku-buildpack-erlang.git"
 
 ### Select an Erlang version
 
@@ -24,10 +24,14 @@ heroku-16:
 
 * OTP-20.1 *
 
+heroku-18:
+
+* OTP-22.2.7 *
+
 To select the version for your app:
 
-    $ echo OTP-20.1 > .preferred_otp_version
-    $ git commit -m "Select 20.1 as preferred OTP version" .preferred_otp_version
+    $ echo OTP-22.2.7 > .preferred_otp_version
+    $ git commit -m "Select 22.2.7 as preferred OTP version" -a
 
 ### Build your Heroku App
 
