@@ -160,7 +160,7 @@ else
     tar zxf ${cache}/${tarball} -C ${ERLROOT} ${strip}
     echo "-------> Installing Erlang/OTP $ver"
     ln -s ${ERLROOT} /app/otp
-    ${ERLROOT}/Install /app/otp
+    ${ERLROOT}/Install -minimal /app/otp
 
     PATH=/app/otp/bin:$PATH
     export PATH
@@ -203,7 +203,9 @@ else
             echo "-----> Building release with Rebar3"
             TERM=dumb
             ./rebar3 update
-            ./rebar3 release -i true --dev-mode false  2>&1 | sed -u 's/^/       /'
+	    # FIXME
+            # ./rebar3 release -i true --dev-mode false  2>&1 | sed -u 's/^/       /'
+	    ./rebar3 release 2>&1 | sed -u 's/^/       /'
             ;;
         "erlang.mk")
 	        echo "-----> Building release with erlang.mk"
