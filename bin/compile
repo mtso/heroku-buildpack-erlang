@@ -160,7 +160,7 @@ else
     tar zxf ${cache}/${tarball} -C ${ERLROOT} ${strip}
     echo "-------> Installing Erlang/OTP $ver"
     ln -s ${ERLROOT} /app/otp
-    ${ERLROOT}/Install -minimal /app/otp
+    ${ERLROOT}/Install /app/otp
 
     PATH=/app/otp/bin:$PATH
     export PATH
