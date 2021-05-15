@@ -114,7 +114,18 @@ else
             tarball="${ver}.tgz"
             location="heroku/heroku-18/"
             strip=""
-            ;; 
+            ;;
+	heroku-20)
+            echo "-----> Stack is heroku-20"
+            DEFAULT_OTP_VERSION="OTP-22.2.7"
+            if [ -f ${build}/.preferred_otp_version ]; then
+                OTP_VERSION=$(cat ${build}/.preferred_otp_version)
+            fi
+            ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
+            tarball="${ver}.tgz"
+            location="heroku/heroku-20/"
+            strip=""
+            ;;
         *)
             echo "-----> Sorry, stack $STACK is not available"
             exit 1
