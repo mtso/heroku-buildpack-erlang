@@ -123,7 +123,7 @@ else
             fi
             ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
             tarball="${ver}.tgz"
-            location="heroku/heroku-20/"
+            location="heroku/heroku-18/" # fix this one day
             strip=""
             ;;
         *)
