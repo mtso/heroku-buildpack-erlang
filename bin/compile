@@ -125,6 +125,8 @@ else
             tarball="${ver}.tgz"
             location="heroku/heroku-18/" # fix this one day
             strip=""
+	    echo "-----> Linking /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5"
+	    ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5
             ;;
         *)
             echo "-----> Sorry, stack $STACK is not available"
