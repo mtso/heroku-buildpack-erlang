@@ -205,7 +205,7 @@ else
             ./rebar3 update
 	    # FIXME
             # ./rebar3 release -i true --dev-mode false  2>&1 | sed -u 's/^/       /'
-	    ./rebar3 release 2>&1 | sed -u 's/^/       /'
+	    ./rebar3 compile 2>&1 | sed -u 's/^/       /'
             ;;
         "erlang.mk")
 	        echo "-----> Building release with erlang.mk"
