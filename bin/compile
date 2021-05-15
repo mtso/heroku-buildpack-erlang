@@ -103,6 +103,7 @@ else
             tarball="${ver}.tgz"
             location="heroku/heroku-16/"
             strip=""
+            OTP_TARBALL_URL="https://svn.marco-gatti.com/${location}${tarball}"
             ;;
         heroku-18)
             echo "-----> Stack is heroku-18"
@@ -114,6 +115,7 @@ else
             tarball="${ver}.tgz"
             location="heroku/heroku-18/"
             strip=""
+            OTP_TARBALL_URL="https://svn.marco-gatti.com/${location}${tarball}"
             ;;
 	heroku-20)
             echo "-----> Stack is heroku-20"
@@ -123,17 +125,15 @@ else
             fi
             ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
             tarball="${ver}.tgz"
-            location="heroku/heroku-18/" # fix this one day
+            location="heroku/heroku-20/"
             strip=""
-	    echo "-----> Linking /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5"
-	    ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5
+	    OTP_TARBALL_URL="https://github.com/mtso/heroku-buildpack-erlang/releases/download/heroku-20-v0/${tarball}"
             ;;
         *)
             echo "-----> Sorry, stack $STACK is not available"
             exit 1
             ;;
     esac
-    OTP_TARBALL_URL="https://svn.marco-gatti.com/${location}${tarball}"
     ERLROOT=${build}/otp
     PROFILE=${HOME}/.profile.d
 
@@ -148,7 +148,7 @@ else
         rm -rf ${cache}/* # be sure not to build up cruft
         cd ${cache}
         echo "-------> Fetching Erlang/$ver"
-        curl -sSO ${OTP_TARBALL_URL}
+        curl -sSOL ${OTP_TARBALL_URL}
 
         echo "-------> Finished fetching tarball, checking"
         file ${tarball} | grep -ql gzip
