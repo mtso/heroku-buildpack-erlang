@@ -125,8 +125,8 @@ else
             tarball="${ver}.tgz"
             location="heroku/heroku-18/" # fix this one day
             strip=""
-	    echo "-----> Installing libncurses5"
-	    apt install libncurses5
+	    echo "-----> Installing libncurses5-dev"
+	    apt install libncurses5-dev
             ;;
         *)
             echo "-----> Sorry, stack $STACK is not available"
